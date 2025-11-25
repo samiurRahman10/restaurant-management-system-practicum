@@ -1,8 +1,6 @@
 const Sidebar = ({ activePage, setActivePage, sidebarOpen, setSidebarOpen }) => {
     const menuItems = [
         { id: 'dashboard', label: 'Dashboard', icon: 'fas fa-chart-line' },
-        { id: 'users', label: 'Users', icon: 'fas fa-users' },
-        { id: 'reservations', label: 'Reservations', icon: 'fas fa-calendar-check' },
         { id: 'menu', label: 'Menu', icon: 'fas fa-utensils' },
         { id: 'orders', label: 'Orders', icon: 'fas fa-shopping-basket' },
         { id: 'inventory', label: 'Inventory', icon: 'fas fa-boxes' },

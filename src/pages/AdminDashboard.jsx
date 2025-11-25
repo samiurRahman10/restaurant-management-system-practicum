@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import AdminLayout from '../components/admin/layout/AdminLayout';
 import DashboardPage from '../components/admin/dashboard/DashboardPage';
-
+import MenuPage from '../components/admin/menu/MenuPage';
+import OrdersPage from '../components/admin/orders/OrdersPage';
 const AdminDashboard = () => {
   const [activePage, setActivePage] = useState('dashboard');
 
@@ -10,9 +11,9 @@ const AdminDashboard = () => {
       case 'dashboard':
         return <DashboardPage />;
       case 'menu':
-        return <div>Menu Page - Coming Soon</div>;
+        return <MenuPage />;
       case 'orders':
-        return <div>Orders Page - Coming Soon</div>;
+        return <OrdersPage />;
       case 'inventory':
         return <div>Inventory Page - Coming Soon</div>;
       case 'users':
