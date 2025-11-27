@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 /* Custom scrollbar for sidebar */
+/* Make only the date icon black */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: brightness(0) saturate(100%);
+}
+
 .sidebar-scroll::-webkit-scrollbar {
   width: 4px;
 }
