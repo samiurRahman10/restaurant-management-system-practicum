@@ -14,7 +14,7 @@ const Sidebar = ({ activePage, setActivePage, sidebarOpen, setSidebarOpen }) => 
     };
 
     return (
-        <aside className={`fixed h-full w-64 bg-white shadow-xl transform transition-transform duration-300 ease-in-out flex flex-col sidebar-scroll z-50 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        <aside className={`fixed h-full w-64 bg-white text-black shadow-xl transform transition-transform duration-300 ease-in-out flex flex-col sidebar-scroll z-50 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'
             } md:translate-x-0`}>
             <div className="flex items-center justify-center p-6">
                 <h1 className="text-3xl font-bold text-orange-500">DineSmart</h1>

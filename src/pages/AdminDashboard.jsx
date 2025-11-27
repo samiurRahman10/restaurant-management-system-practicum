@@ -3,6 +3,7 @@ import AdminLayout from '../components/admin/layout/AdminLayout';
 import DashboardPage from '../components/admin/dashboard/DashboardPage';
 import MenuPage from '../components/admin/menu/MenuPage';
 import OrdersPage from '../components/admin/orders/OrdersPage';
+import InventoryPage from '../components/admin/inventory/InventoryPage';
 const AdminDashboard = () => {
   const [activePage, setActivePage] = useState('dashboard');
 
@@ -15,7 +16,8 @@ const AdminDashboard = () => {
       case 'orders':
         return <OrdersPage />;
       case 'inventory':
-        return <div>Inventory Page - Coming Soon</div>;
+         return <InventoryPage/>
+         ;
       case 'users':
         return <div>Users Page - Coming Soon</div>;
       case 'reservations':

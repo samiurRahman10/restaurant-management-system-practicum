@@ -6,7 +6,7 @@ const MenuHeader = ({ stats}) => {
           <h1 className="text-2xl font-bold text-gray-800">Menu Management</h1>
           <p className="text-gray-600">Manage your restaurant menu items and POS orders</p>
         </div>
-        <div className="flex space-x-3 mt-4 md:mt-0">
+        <div className="grid grid-cols-1 mt-2 md:mt-0 md:grid-cols-2 gap-2 ">
           <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors">
             <i className="fas fa-plus"></i> Add New Item
           </button>

@@ -1,6 +1,6 @@
 const OrderActions = ({ onAddNewOrder, onPrintOrders, viewMode, onViewModeChange }) => {
   return (
-    <div className="flex space-x-3 mt-4 md:mt-0">
+    <div className="grid grid-cols-1 mt-2 md:mt-0 md:grid-cols-3 gap-2">
       {/* View Mode Toggle */}
       <div className="flex bg-gray-100 rounded-lg p-1">
         <button
