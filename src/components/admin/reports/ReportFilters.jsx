@@ -64,7 +64,7 @@ const ReportFilters = ({ filters, onFilterChange }) => {
               <option value="all">All Categories</option>
               <option value="food">Food</option>
               <option value="beverages">Beverages</option>
-              <option value="alcohol">Alcohol</option>
+              {/* <option value="alcohol">Alcohol</option> */}
             </select>
           </div>
         </div>
