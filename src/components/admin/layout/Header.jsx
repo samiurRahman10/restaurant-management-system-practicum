@@ -1,4 +1,13 @@
+import { useNavigate } from 'react-router-dom';
+
 const Header = ({ setSidebarOpen }) => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('isAuthenticated');
+    navigate('/login');
+  };
+
   return (
     <header className="h-16 py-4 flex items-center justify-between px-4 md:px-6 bg-white shadow-sm">
       <div className="flex items-center space-x-4 flex-1">
@@ -52,6 +61,14 @@ const Header = ({ setSidebarOpen }) => {
             <div className="text-xs text-gray-600">Administrator</div>
           </div>
         </div>
+
+        {/* Logout button */}
+        <button
+          onClick={handleLogout}
+          className="px-3 py-2 text-sm font-semibold text-white bg-red-500 rounded-lg hover:bg-red-600 transition-colors"
+        >
+          Logout
+        </button>
       </div>
     </header>
   );

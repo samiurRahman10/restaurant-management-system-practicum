@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const Header = () => {
   return (
     <header className="bg-white max-w-[1300px] mx-auto">
@@ -10,21 +12,21 @@ const Header = () => {
               </svg>
             </div>
             <ul tabIndex={-1} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-              <li><a href="" className="text-gray-700 font-semibold">Home</a></li>
-              <li><a href="" className="text-gray-700 font-semibold">Menu</a></li>
-              <li><a href="" className="text-gray-700 font-semibold">Sign In</a></li>
-              <li><a href="" className="text-gray-700 font-semibold">Get Started</a></li>
+              <li><Link to="/" className="text-gray-700 font-semibold">Home</Link></li>
+              <li><a href="/" className="text-gray-700 font-semibold">Menu</a></li>
+              <li><Link to="/login" className="text-gray-700 font-semibold">Sign In</Link></li>
+              <li><Link to="/register" className="text-gray-700 font-semibold">Register</Link></li>
             </ul>
           </div>
-          <a className="text-2xl text-orange-500 font-bold">DineSmart</a>
+          <Link to="/" className="text-2xl text-orange-500 font-bold">DineSmart</Link>
         </div>
         <div className="navbar-end hidden lg:flex">
           <ul className="menu menu-horizontal px-1 flex items-center">
-            <li><a href="index.html" className="text-gray-700 font-semibold">Home</a></li>
-            <li><a href="menu.html" className="text-gray-700 font-semibold">Menu</a></li>
-            <li><a href="login.html" className="text-gray-700 font-semibold">Sign In</a></li>
+            <li><Link to="/" className="text-gray-700 font-semibold">Home</Link></li>
+            <li><a href="/" className="text-gray-700 font-semibold">Menu</a></li>
+            <li><Link to="/login" className="text-gray-700 font-semibold">Sign In</Link></li>
             <button className="btn ml-1 font-semibold bg-orange-500 p-5 text-white">
-              <a href="register.html">Get Started</a>
+              <Link to="/register">Get Started</Link>
             </button>
           </ul>
         </div>

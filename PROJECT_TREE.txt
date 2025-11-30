@@ -1,0 +1,86 @@
+e:\restaurant-management-system-practicum
+- .gitignore
+- README.md
+- index.html
+- package.json
+- package-lock.json
+- postcss.config.js
+- eslint.config.js
+- tailwind.config.js
+- vite.config.js
+- public/
+  - vite.svg
+- src/
+  - App.jsx
+  - App.css
+  - main.jsx
+  - index.css
+  - routes/
+    - AppRouter.jsx
+  - pages/
+    - LandingPage.jsx
+    - AdminDashboard.jsx
+    - LoginPage.jsx
+    - RegistrationPage.jsx
+    - ForgotPasswordPage.jsx
+    - NotFoundPage.jsx
+  - assets/
+    - react.svg
+  - components/
+    - home/
+      - layout/
+        - Header.jsx
+        - Footer.jsx
+      - landing/
+        - Hero.jsx
+        - Features.jsx
+        - FeaturedDishes.jsx
+        - VisitUs.jsx
+    - admin/
+      - layout/
+        - AdminLayout.jsx
+        - Header.jsx
+        - Sidebar.jsx
+      - dashboard/
+        - DashboardPage.jsx
+        - StatsCards.jsx
+        - RevenueChart.jsx
+        - RecentActivities.jsx
+        - RecentOrders.jsx
+        - QuickAction.jsx
+        - PopularItems.jsx
+        - LowStockAlert.jsx
+        - AlertsFooter.jsx
+      - menu/
+        - MenuPage.jsx
+        - MenuHeader.jsx
+        - MenuGrid.jsx
+        - CategoryFilter.jsx
+        - CartSection.jsx
+        - QuickActions.jsx
+      - orders/
+        - OrdersPage.jsx
+        - OrderTable.jsx
+        - OrderStats.jsx
+        - OrderActions.jsx
+        - OrderCard.jsx
+        - OrderCardsGrid.jsx
+        - OrderFilterTabs.jsx
+      - inventory/
+        - InventoryPage.jsx
+        - InventoryTable.jsx
+        - InventoryStats.jsx
+        - SearchFilterBar.jsx
+        - AddItemModal.jsx
+        - EditItemModal.jsx
+        - LowStocksAlerts.jsx
+        - Notification.jsx
+      - reports/
+        - ReportsPage.jsx
+        - ReportFilters.jsx
+        - ReportStats.jsx
+        - SalesReport.jsx
+        - InventoryReport.jsx
+        - FinancialReport.jsx
+      - settings/
+        - SettingsPage.jsx

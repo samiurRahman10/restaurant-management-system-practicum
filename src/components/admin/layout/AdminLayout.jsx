@@ -1,16 +1,15 @@
 import { useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Header from './Header';
 
-const AdminLayout = ({ children, activePage, setActivePage }) => {
+const AdminLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div className="flex h-screen bg-gray-50 font-sans">
       {/* Sidebar */}
       <Sidebar 
-        activePage={activePage} 
-        setActivePage={setActivePage}
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
       />
@@ -26,8 +25,8 @@ const AdminLayout = ({ children, activePage, setActivePage }) => {
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-w-0 md:ml-64">
         <Header setSidebarOpen={setSidebarOpen} />
-        <main className="flex-1 overflow-y-auto">
-          {children}
+        <main className="flex-1 overflow-y-auto p-6">
+          <Outlet />
         </main>
       </div>
     </div>
