@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InventoryTable = ({ items, onEdit, onUpdateStock, onDelete }) => {
+const InventoryTable = ({ items, onEdit, onDelete }) => {
   const getStatusBadge = (status) => {
     const statusConfig = {
       'in_stock': { text: 'In Stock', class: 'bg-green-100 text-green-800' },
@@ -58,27 +58,13 @@ const InventoryTable = ({ items, onEdit, onUpdateStock, onDelete }) => {
                   <td className="px-6 py-4 text-gray-500">{item.supplier}</td>
                   <td className="px-6 py-4">{getStatusBadge(item.status)}</td>
                   <td className="px-6 py-4">
-                    <div className="flex gap-2">
+                    <div className="flex gap-7">
                       <button 
                         onClick={() => onEdit(item)} 
                         className="text-blue-600 hover:text-blue-800 transition-colors"
                         title="Edit"
                       >
                         <i className="fas fa-edit"></i>
-                      </button>
-                      <button 
-                        onClick={() => onUpdateStock(item.id, 1)} 
-                        className="text-green-600 hover:text-green-800 transition-colors"
-                        title="Increase Stock"
-                      >
-                        <i className="fas fa-plus"></i>
-                      </button>
-                      <button 
-                        onClick={() => onUpdateStock(item.id, -1)} 
-                        className="text-yellow-600 hover:text-yellow-800 transition-colors"
-                        title="Decrease Stock"
-                      >
-                        <i className="fas fa-minus"></i>
                       </button>
                       <button 
                         onClick={() => onDelete(item.id)} 

@@ -6,7 +6,7 @@ import LandingPage from '../pages/LandingPage';
 import LoginPage from '../pages/LoginPage';
 import RegistrationPage from '../pages/RegistrationPage';
 import ForgotPasswordPage from '../pages/ForgotPasswordPage';
-import AdminDashboard from '../pages/AdminDashboard';
+// import AdminDashboard from '../pages/AdminDashboard';
 import NotFoundPage from '../pages/NotFoundPage';
 
 // Admin Layout
