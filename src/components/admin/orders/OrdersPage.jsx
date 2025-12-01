@@ -4,6 +4,7 @@ import OrderFilterTabs from './OrderFilterTabs';
 import OrderCardsGrid from './OrderCardsGrid';
 import OrderTable from './OrderTable';
 import OrderActions from './OrderActions';
+import NewOrderModal from './NewOrderModal';
 
 // MOCK DATA (REMOVE WHEN BACKEND IS AVAILABLE):
 // - Located here for development and UI preview.
@@ -100,8 +101,9 @@ const OrdersPage = () => {
   const [orders, setOrders] = useState(mockOrdersData);
   const [selectedStatus, setSelectedStatus] = useState('all');
   const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'table'
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [_loading, setLoading] = useState(false);
+  const [_error, setError] = useState(null);
+  const [isNewOrderModalOpen, setIsNewOrderModalOpen] = useState(false);
 
   useEffect(() => {
     fetchOrders();
@@ -165,8 +167,13 @@ const OrdersPage = () => {
 
   // Add new order
   const addNewOrder = () => {
-    // This would open a modal in real implementation
-    alert('New Order feature would open here');
+    setIsNewOrderModalOpen(true);
+  };
+
+  // Handle new order creation
+  const handleOrderCreated = (newOrder) => {
+    setOrders(prevOrders => [newOrder, ...prevOrders]);
+    setError(null);
   };
 
   // Print orders
@@ -213,6 +220,13 @@ const OrdersPage = () => {
           onStatusUpdate={updateOrderStatus}
         />
       )}
+
+      {/* New Order Modal */}
+      <NewOrderModal 
+        isOpen={isNewOrderModalOpen}
+        onClose={() => setIsNewOrderModalOpen(false)}
+        onOrderCreated={handleOrderCreated}
+      />
     </div>
   );
 };
