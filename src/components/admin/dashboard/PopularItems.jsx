@@ -1,6 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const PopularItems = () => {
+    // MOCK DATA (REMOVE WHEN BACKEND IS AVAILABLE):
+    // - Located here for development and UI preview.
+    // - When integrating the backend, replace this initial state
+    //   with data fetched from `apiService.dashboard.getPopularItems()`
+    //   and remove these mock entries.
+    const [popularItems, setPopularItems] = useState([
+      { name: 'Grilled Salmon', color: 'text-orange-500', orders: 42 },
+      { name: 'Beef Burger', color: 'text-purple-500', orders: 38 },
+      { name: 'Caesar Salad', color: 'text-green-500', orders: 35 },
+      { name: 'Margherita Pizza', color: 'text-blue-500', orders: 30 },
+      { name: 'Chocolate Cake', color: 'text-gray-600', orders: 25 }
+    ]);
+
+    async function fetchPopularItems() {
+      try {
+        // TODO: API CALL - Get popular menu items
+        // TODO: import apiService from '../../../services/apiService';
+        // TODO: const response = await apiService.dashboard.getPopularItems();
+        // TODO: setPopularItems(response.items);
+
+        // CURRENT: Mock data - remove when API is ready
+      } catch (err) {
+        // TODO: Handle API errors
+        console.error('Failed to fetch popular items:', err.message);
+      }
+    }
+
+    useEffect(() => {
+      fetchPopularItems();
+    }, []);
     return (
         <div>
             <div className="bg-white rounded-lg p-4 shadow">
@@ -8,11 +38,12 @@ const PopularItems = () => {
             <p className="text-gray-600 mb-4 text-sm">Top ordered dishes this week</p>
             <div className="flex items-center justify-center h-48">
               <ul className="space-y-2 text-sm w-full">
-                <li className="flex justify-between"><span className="text-orange-500">Grilled Salmon</span><span className="font-semibold text-black">42 orders</span></li>
-                <li className="flex justify-between"><span className="text-purple-500">Beef Burger</span><span className="font-semibold text-black">38 orders</span></li>
-                <li className="flex justify-between"><span className="text-green-500">Caesar Salad</span><span className="font-semibold text-black">35 orders</span></li>
-                <li className="flex justify-between"><span className="text-blue-500">Margherita Pizza</span><span className="font-semibold text-black">30 orders</span></li>
-                <li className="flex justify-between"><span className="text-gray-600">Chocolate Cake</span><span className="font-semibold text-black">25 orders</span></li>
+                {popularItems.map((item, index) => (
+                  <li key={index} className="flex justify-between">
+                    <span className={item.color}>{item.name}</span>
+                    <span className="font-semibold text-black">{item.orders} orders</span>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

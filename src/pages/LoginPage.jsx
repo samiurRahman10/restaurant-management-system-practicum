@@ -7,7 +7,7 @@ const LoginPage = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (!email || !password) {
@@ -15,12 +15,23 @@ const LoginPage = () => {
       return;
     }
 
-    // Mock login - in production, this would be an API call
-    if (email && password.length >= 6) {
-      localStorage.setItem('isAuthenticated', 'true');
-      navigate('/admin/dashboard');
-    } else {
-      setError('Invalid credentials');
+    try {
+      // TODO: API CALL - Replace with actual authentication endpoint
+      // TODO: import apiService from '../services/apiService';
+      // TODO: const response = await apiService.auth.login(email, password);
+      // TODO: localStorage.setItem('token', response.token);
+      // TODO: localStorage.setItem('user', JSON.stringify(response.user));
+      
+      // CURRENT: Mock login - remove this when API is ready
+      if (email && password.length >= 6) {
+        localStorage.setItem('isAuthenticated', 'true');
+        navigate('/admin/dashboard');
+      } else {
+        setError('Invalid credentials');
+      }
+    } catch (err) {
+      // TODO: Handle API errors
+      setError(err.message || 'Login failed');
     }
   };
 

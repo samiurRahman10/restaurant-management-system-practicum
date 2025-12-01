@@ -1,5 +1,9 @@
+import { useState, useEffect } from 'react';
+
 const RecentActivities = () => {
-  const activities = [
+  // MOCK DATA (REMOVE WHEN BACKEND IS AVAILABLE):
+  // - Use `apiService.dashboard.getRecentActivities()` to populate this.
+  const [activities, setActivities] = useState([
     {
       action: "Table #5 placed order #1245",
       time: "2 mins ago"
@@ -16,7 +20,25 @@ const RecentActivities = () => {
       action: "New menu item added: Seafood Pasta",
       time: "2 hours ago"
     }
-  ];
+  ]);
+
+  useEffect(() => {
+    fetchActivities();
+  }, []);
+
+  const fetchActivities = async () => {
+    try {
+      // TODO: API CALL - Get recent activities/audit log
+      // TODO: import apiService from '../../../services/apiService';
+      // TODO: const response = await apiService.dashboard.getRecentActivities();
+      // TODO: setActivities(response.activities);
+      
+      // CURRENT: Mock data - remove when API is ready
+    } catch (err) {
+      // TODO: Handle API errors
+      console.error('Failed to fetch activities:', err.message);
+    }
+  };
 
   return (
     <div className="bg-white shadow rounded-lg p-4 md:p-6">

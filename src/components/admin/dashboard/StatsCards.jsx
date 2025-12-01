@@ -1,5 +1,11 @@
+import { useState, useEffect } from 'react';
+
 const StatsCards = () => {
-  const stats = [
+  // MOCK DATA (REMOVE WHEN BACKEND IS AVAILABLE):
+  // - Used for UI preview during development.
+  // - Replace by calling `apiService.dashboard.getStats()` and
+  //   setting the returned stats into state, then remove these entries.
+  const [stats, setStats] = useState([
     {
       title: "Total Revenue",
       value: "$24,800",
@@ -32,7 +38,26 @@ const StatsCards = () => {
       gradient: "from-purple-400 to-purple-500",
       textColor: "text-white"
     }
-  ];
+  ]);
+
+  useEffect(() => {
+    fetchStats();
+  }, []);
+
+  const fetchStats = async () => {
+    try {
+      // TODO: API CALL - Get dashboard statistics
+      // TODO: import apiService from '../../../services/apiService';
+      // TODO: const response = await apiService.dashboard.getStats();
+      // TODO: setStats(response.stats);
+      
+      // CURRENT: Mock data - remove when API is ready
+      // Data will be fetched from backend
+    } catch (err) {
+      // TODO: Handle API errors
+      console.error('Failed to fetch stats:', err.message);
+    }
+  };
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6">

@@ -22,7 +22,19 @@ const ForgotPasswordPage = () => {
       return;
     }
 
-    // Mock email verification
+    // TODO: API CALL - STEP 1: Send password reset email
+    // TODO: import apiService from '../services/apiService';
+    // TODO: try {
+    // TODO:   await apiService.auth.forgotPassword(email);
+    // TODO:   setSuccess('Password reset code sent to your email');
+    // TODO:   setStep('reset');
+    // TODO: } catch (err) {
+    // TODO:   setError(err.message || 'Failed to send reset code');
+    // TODO: } finally {
+    // TODO:   setLoading(false);
+    // TODO: }
+    
+    // CURRENT: Mock email verification - remove when API is ready
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
@@ -50,7 +62,19 @@ const ForgotPasswordPage = () => {
       return;
     }
 
-    // Mock password reset
+    // TODO: API CALL - STEP 2: Reset password with code
+    // TODO: import apiService from '../services/apiService';
+    // TODO: try {
+    // TODO:   await apiService.auth.resetPassword(email, resetCode, newPassword);
+    // TODO:   setSuccess('Password reset successful! Redirecting to login...');
+    // TODO:   setTimeout(() => navigate('/login'), 1500);
+    // TODO: } catch (err) {
+    // TODO:   setError(err.message || 'Failed to reset password');
+    // TODO: } finally {
+    // TODO:   setLoading(false);
+    // TODO: }
+    
+    // CURRENT: Mock password reset - remove when API is ready
     setLoading(true);
     setTimeout(() => {
       setLoading(false);

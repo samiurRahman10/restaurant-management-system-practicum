@@ -1,4 +1,4 @@
-const MenuHeader = ({ stats}) => {
+const MenuHeader = ({ stats, onAddNewItem }) => {
   return (
     <div className="mb-6">
       <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
@@ -7,7 +7,10 @@ const MenuHeader = ({ stats}) => {
           <p className="text-gray-600">Manage your restaurant menu items and POS orders</p>
         </div>
         <div className="grid grid-cols-1 mt-2 md:mt-0 md:grid-cols-2 gap-2 ">
-          <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors">
+          <button 
+            onClick={onAddNewItem}
+            className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors"
+          >
             <i className="fas fa-plus"></i> Add New Item
           </button>
           <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 transition-colors">

@@ -1,5 +1,9 @@
+import { useState, useEffect } from 'react';
+
 const RecentOrders = () => {
-  const orders = [
+  // MOCK DATA (REMOVE WHEN BACKEND IS AVAILABLE):
+  // - Replace by fetching recent orders via `apiService.orders.getRecentOrders()`
+  const [orders, setOrders] = useState([
     {
       id: "#1245",
       customer: "Customer One",
@@ -32,7 +36,25 @@ const RecentOrders = () => {
       status: "Pending",
       statusColor: "text-yellow-600"
     }
-  ];
+  ]);
+
+  useEffect(() => {
+    fetchRecentOrders();
+  }, []);
+
+  const fetchRecentOrders = async () => {
+    try {
+      // TODO: API CALL - Get recent orders (limited to last 5-10)
+      // TODO: import apiService from '../../../services/apiService';
+      // TODO: const response = await apiService.orders.getRecentOrders();
+      // TODO: setOrders(response.orders);
+      
+      // CURRENT: Mock data - remove when API is ready
+    } catch (err) {
+      // TODO: Handle API errors
+      console.error('Failed to fetch recent orders:', err.message);
+    }
+  };
 
   return (
     <section className="bg-white shadow rounded-lg p-4 md:p-6 mb-6 md:mb-8">

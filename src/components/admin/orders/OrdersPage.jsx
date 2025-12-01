@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import OrderStats from './OrderStats';
 import OrderFilterTabs from './OrderFilterTabs';
 import OrderCardsGrid from './OrderCardsGrid';
 import OrderTable from './OrderTable';
 import OrderActions from './OrderActions';
 
-// Mock orders data - will be replaced with your JSON data
-const ordersData = [
+// MOCK DATA (REMOVE WHEN BACKEND IS AVAILABLE):
+// - Located here for development and UI preview.
+// - Replace by fetching from `apiService.orders.getOrders()` and remove this array.
+const mockOrdersData = [
   {
     id: 1245,
     customerName: "Customer One",
@@ -95,9 +97,35 @@ const ordersData = [
 ];
 
 const OrdersPage = () => {
-  const [orders, setOrders] = useState(ordersData);
+  const [orders, setOrders] = useState(mockOrdersData);
   const [selectedStatus, setSelectedStatus] = useState('all');
   const [viewMode, setViewMode] = useState('grid'); // 'grid' or 'table'
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchOrders();
+  }, []);
+
+  const fetchOrders = async () => {
+    try {
+      setLoading(true);
+      // TODO: API CALL - Fetch all orders
+      // TODO: import apiService from '../../../services/apiService';
+      // TODO: const response = await apiService.orders.getOrders();
+      // TODO: setOrders(response.orders);
+      
+      // CURRENT: Mock data - remove when API is ready
+      setOrders(mockOrdersData);
+      setError(null);
+    } catch (err) {
+      // TODO: Handle API errors
+      setError(err.message || 'Failed to fetch orders');
+      console.error('Failed to fetch orders:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Filter orders based on selected status
   const filteredOrders = selectedStatus === 'all' 
@@ -115,12 +143,24 @@ const OrdersPage = () => {
   };
 
   // Update order status
-  const updateOrderStatus = (orderId, newStatus) => {
-    setOrders(prevOrders => 
-      prevOrders.map(order => 
-        order.id === orderId ? { ...order, status: newStatus } : order
-      )
-    );
+  const updateOrderStatus = async (orderId, newStatus) => {
+    try {
+      // TODO: API CALL - Update order status
+      // TODO: import apiService from '../../../services/apiService';
+      // TODO: await apiService.orders.updateOrderStatus(orderId, newStatus);
+      
+      // CURRENT: Mock update - remove when API is ready
+      setOrders(prevOrders => 
+        prevOrders.map(order => 
+          order.id === orderId ? { ...order, status: newStatus } : order
+        )
+      );
+      setError(null);
+    } catch (err) {
+      // TODO: Handle API errors
+      setError(err.message || 'Failed to update order status');
+      console.error('Failed to update order status:', err);
+    }
   };
 
   // Add new order
@@ -135,7 +175,7 @@ const OrdersPage = () => {
   };
 
   return (
-    <div className="p-4 md:p-6">
+    <div className=" md:p-2">
       {/* Orders Header */}
       <div className="mb-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">

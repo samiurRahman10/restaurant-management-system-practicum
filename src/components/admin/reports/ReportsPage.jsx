@@ -16,11 +16,15 @@ const ReportsPage = () => {
   const [reportData, setReportData] = useState({
     sales: [],
     inventory: [],
-    financial: []
+    financial: {}
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  // Define all functions before using them in useEffect
+  // MOCK DATA (REMOVE WHEN BACKEND IS AVAILABLE):
+  // - These generators create placeholder report data for UI previews.
+  // - Replace with `apiService.reports.getReport(activeReport, filters)` responses
+  //   and remove the generator functions.
   const generateSalesData = () => {
     const days = [];
     const start = new Date(filters.startDate);
@@ -66,41 +70,38 @@ const ReportsPage = () => {
     };
   };
 
-  // Now useEffect can safely use the functions
-  useEffect(() => {
-    let isMounted = true;
-    
-    const loadData = async () => {
-      if (!isMounted) return;
-      
+  const fetchReports = async () => {
+    try {
       setIsLoading(true);
+      setError(null);
       
-      // Simulate API call with delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // TODO: API CALL - Get report data based on active report and filters
+      // TODO: import apiService from '../../../services/apiService';
+      // TODO: const response = await apiService.reports.getReport(activeReport, filters);
+      // TODO: setReportData(prev => ({ ...prev, [activeReport]: response.data }));
       
-      if (!isMounted) return;
-      
-      const salesData = generateSalesData();
-      const inventoryData = generateInventoryData();
-      const financialData = generateFinancialData();
-      
-      setReportData({
-        sales: salesData,
-        inventory: inventoryData,
-        financial: financialData
-      });
-      
-      if (!isMounted) return;
+      // CURRENT: Mock data - remove when API is ready
+      if (activeReport === 'sales') {
+        setReportData(prev => ({ ...prev, sales: generateSalesData() }));
+      } else if (activeReport === 'inventory') {
+        setReportData(prev => ({ ...prev, inventory: generateInventoryData() }));
+      } else if (activeReport === 'financial') {
+        setReportData(prev => ({ ...prev, financial: generateFinancialData() }));
+      }
+    } catch (err) {
+      // TODO: Handle API errors
+      setError(err.message || 'Failed to fetch reports');
+      console.error('Failed to fetch reports:', err);
+    } finally {
       setIsLoading(false);
-    };
+    }
+  };
 
-    loadData();
-
-    // Cleanup function to prevent state updates on unmounted component
-    return () => {
-      isMounted = false;
-    };
-  }, [filters]);
+  // Now useEffect can safely use the function
+  useEffect(() => {
+    fetchReports();
+  }, [activeReport, filters]);
+ 
 
   const handleFilterChange = (newFilters) => {
     setFilters(newFilters);
@@ -158,7 +159,7 @@ const ReportsPage = () => {
   };
 
   return (
-    <div className="page-content p-4 md:p-6">
+    <div className="page-content md:p-2">
       {/* Header */}
       <div className="mb-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">

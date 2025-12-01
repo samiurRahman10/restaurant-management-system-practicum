@@ -1,5 +1,9 @@
+import { useState, useEffect } from 'react';
+
 const RevenueChart = () => {
-  const revenueData = [
+  // MOCK DATA (REMOVE WHEN BACKEND IS AVAILABLE):
+  // - Replace with `apiService.dashboard.getRevenueChart(period)` when backend is ready.
+  const [revenueData, setRevenueData] = useState([
     { day: "Mon", height: "60px", revenue: "$3,200" },
     { day: "Tue", height: "90px", revenue: "$4,800" },
     { day: "Wed", height: "70px", revenue: "$3,800" },
@@ -7,7 +11,25 @@ const RevenueChart = () => {
     { day: "Fri", height: "100px", revenue: "$4,500" },
     { day: "Sat", height: "140px", revenue: "$6,200" },
     { day: "Sun", height: "110px", revenue: "$5,100" }
-  ];
+  ]);
+
+  useEffect(() => {
+    fetchRevenueData();
+  }, []);
+
+  const fetchRevenueData = async () => {
+    try {
+      // TODO: API CALL - Get revenue chart data for the week
+      // TODO: import apiService from '../../../services/apiService';
+      // TODO: const response = await apiService.dashboard.getRevenueChart('week');
+      // TODO: setRevenueData(response.chartData);
+      
+      // CURRENT: Mock data - remove when API is ready
+    } catch (err) {
+      // TODO: Handle API errors
+      console.error('Failed to fetch revenue data:', err.message);
+    }
+  };
 
   return (
     <div className="bg-white rounded-lg p-4 shadow">

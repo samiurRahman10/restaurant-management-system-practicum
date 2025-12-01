@@ -44,7 +44,18 @@ const RegistrationPage = () => {
       return;
     }
 
-    // Mock registration - in production, this would be an API call
+    // TODO: API CALL - Replace with actual registration endpoint
+    // TODO: import apiService from '../services/apiService';
+    // TODO: try {
+    // TODO:   const response = await apiService.auth.register(formData);
+    // TODO:   localStorage.setItem('token', response.token);
+    // TODO:   localStorage.setItem('user', JSON.stringify(response.user));
+    // TODO:   navigate('/admin/dashboard');
+    // TODO: } catch (err) {
+    // TODO:   setError(err.message || 'Registration failed');
+    // TODO: }
+    
+    // CURRENT: Mock registration - remove this when API is ready
     setLoading(true);
     setTimeout(() => {
       localStorage.setItem('restaurantData', JSON.stringify({

@@ -23,13 +23,36 @@ const EditItemModal = ({ item, onClose, onSave }) => {
     };
   });
 
-  const handleSubmit = (e) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onSave({
-      ...formData,
-      currentStock: parseFloat(formData.currentStock),
-      reorderLevel: parseFloat(formData.reorderLevel)
-    });
+    try {
+      setIsSubmitting(true);
+      setError(null);
+
+      // TODO: API CALL - Update inventory item
+      // TODO: import apiService from '../../../services/apiService';
+      // TODO: await apiService.inventory.updateInventoryItem(item.id, {
+      // TODO:   ...formData,
+      // TODO:   currentStock: parseFloat(formData.currentStock),
+      // TODO:   reorderLevel: parseFloat(formData.reorderLevel)
+      // TODO: });
+
+      // CURRENT: Mock save - remove when API is ready
+      onSave({
+        ...formData,
+        currentStock: parseFloat(formData.currentStock),
+        reorderLevel: parseFloat(formData.reorderLevel)
+      });
+    } catch (err) {
+      // TODO: Handle API errors
+      setError(err.message || 'Failed to update item');
+      console.error('Failed to update inventory item:', err);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {

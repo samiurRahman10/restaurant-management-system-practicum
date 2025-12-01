@@ -65,7 +65,7 @@ const Header = ({ setSidebarOpen }) => {
         {/* Logout button */}
         <button
           onClick={handleLogout}
-          className="px-3 py-2 text-sm font-semibold text-white bg-red-500 rounded-lg hover:bg-red-600 transition-colors"
+          className="px-3 py-2 text-sm font-semibold text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition-colors"
         >
           Logout
         </button>

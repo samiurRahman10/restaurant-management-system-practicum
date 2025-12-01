@@ -7,18 +7,8 @@ import AddItemModal from './AddItemModal';
 import EditItemModal from './EditItemModal';
 import Notification from './Notification';
 
-const InventoryPage = () => {
-  const [inventoryItems, setInventoryItems] = useState([]);
-  const [filteredItems, setFilteredItems] = useState([]);
-  const [showAddModal, setShowAddModal] = useState(false);
-  const [showEditModal, setShowEditModal] = useState(false);
-  const [editingItem, setEditingItem] = useState(null);
-  const [notification, setNotification] = useState({ show: false, message: '', type: '' });
-  const [isLoading, setIsLoading] = useState(true);
-
-  // Load sample data - defined first
-  const loadSampleData = () => {
-    return [
+// CURRENT: Mock inventory data - remove when API is ready
+const mockInventoryData = [
       {
         id: 1,
         name: "Salmon Fillet",
@@ -119,37 +109,40 @@ const InventoryPage = () => {
         supplier: "Fresh Squeezed Co.",
         status: "in_stock"
       }
-    ];
-  };
+];
 
-  // Initialize inventory - now properly placed before useEffect
-  const initializeInventory = () => {
-    setIsLoading(true);
+const InventoryPage = () => {
+  const [inventoryItems, setInventoryItems] = useState([]);
+  const [filteredItems, setFilteredItems] = useState([]);
+  const [showAddModal, setShowAddModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editingItem, setEditingItem] = useState(null);
+  const [notification, setNotification] = useState({ show: false, message: '', type: '' });
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchInventory = async () => {
     try {
-      const savedInventory = localStorage.getItem('dinesmart_inventory');
-      if (savedInventory) {
-        const items = JSON.parse(savedInventory);
-        setInventoryItems(items);
-        setFilteredItems(items);
-      } else {
-        const sampleItems = loadSampleData();
-        setInventoryItems(sampleItems);
-        setFilteredItems(sampleItems);
-        localStorage.setItem('dinesmart_inventory', JSON.stringify(sampleItems));
-      }
-    } catch (error) {
-      console.error('Error initializing inventory:', error);
-      const sampleItems = loadSampleData();
-      setInventoryItems(sampleItems);
-      setFilteredItems(sampleItems);
-    } finally {
+      setIsLoading(true);
+      // TODO: API CALL - Get all inventory items
+      // TODO: import apiService from '../../../services/apiService';
+      // TODO: const response = await apiService.inventory.getInventory();
+      // TODO: setInventoryItems(response.items);
+      // TODO: setFilteredItems(response.items);
+      
+      // CURRENT: Mock data - remove when API is ready
+      setInventoryItems(mockInventoryData);
+      setFilteredItems(mockInventoryData);
+      setIsLoading(false);
+    } catch (err) {
+      // TODO: Handle API errors
+      console.error('Failed to fetch inventory:', err);
       setIsLoading(false);
     }
   };
 
-  // Use useEffect properly
+  // Initialize inventory with TODO for API
   useEffect(() => {
-    initializeInventory();
+    fetchInventory();
   }, []);
 
   const saveInventoryToStorage = (items) => {
@@ -285,7 +278,7 @@ const InventoryPage = () => {
   }
 
   return (
-    <div className="page-content p-4 md:p-6">
+    <div className="page-content  md:p-2">
       {/* Header */}
       <div className="mb-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">

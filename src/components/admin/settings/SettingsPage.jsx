@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const SettingsPage = () => {
   const [settings, setSettings] = useState({
@@ -13,6 +13,35 @@ const SettingsPage = () => {
 
   const [activeTab, setActiveTab] = useState('general');
   const [isSaved, setIsSaved] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetchSettings();
+  }, []);
+
+  const fetchSettings = async () => {
+    try {
+      setIsLoading(true);
+      // TODO: API CALL - Get restaurant settings
+      // TODO: import apiService from '../../../services/apiService';
+      // TODO: const response = await apiService.settings.getSettings();
+      // TODO: setSettings(response.settings);
+      
+      // CURRENT: Mock data from localStorage - remove when API is ready
+      const savedSettings = localStorage.getItem('restaurantSettings');
+      if (savedSettings) {
+        setSettings(JSON.parse(savedSettings));
+      }
+      setError(null);
+    } catch (err) {
+      // TODO: Handle API errors
+      console.error('Failed to fetch settings:', err);
+      setError(err.message || 'Failed to load settings');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const handleInputChange = (field, value) => {
     setSettings(prev => ({
@@ -22,11 +51,25 @@ const SettingsPage = () => {
     setIsSaved(false);
   };
 
-  const handleSave = () => {
-    // Save settings - in production, this would be an API call
-    localStorage.setItem('restaurantSettings', JSON.stringify(settings));
-    setIsSaved(true);
-    setTimeout(() => setIsSaved(false), 3000);
+  const handleSave = async () => {
+    try {
+      setIsLoading(true);
+      // TODO: API CALL - Update restaurant settings
+      // TODO: import apiService from '../../../services/apiService';
+      // TODO: await apiService.settings.updateSettings(settings);
+      
+      // CURRENT: Mock save to localStorage - remove when API is ready
+      localStorage.setItem('restaurantSettings', JSON.stringify(settings));
+      setIsSaved(true);
+      setTimeout(() => setIsSaved(false), 3000);
+      setError(null);
+    } catch (err) {
+      // TODO: Handle API errors
+      setError(err.message || 'Failed to save settings');
+      console.error('Failed to save settings:', err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (

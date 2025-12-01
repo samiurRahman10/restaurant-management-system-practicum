@@ -1,9 +1,39 @@
+import { useState, useEffect } from 'react';
+
 const AnalyticsSection = ({ activeAnalytics, setActiveAnalytics }) => {
+  // MOCK DATA (REMOVE WHEN BACKEND IS AVAILABLE):
+  // - Placeholder analytics content for UI preview.
+  // - Replace by calling `apiService.dashboard.getAnalytics(type)` and
+  //   set the returned chart data into state.
+  const [analyticsData, setAnalyticsData] = useState({
+    sales: { title: "Revenue Trend (Last 7 Days)", icon: "fas fa-chart-line", iconColor: "text-orange-500", description: "Interactive revenue chart would appear here" },
+    orders: { title: "Order Trend (Last 7 Days)", icon: "fas fa-shopping-basket", iconColor: "text-teal-500", description: "Interactive order chart would appear here" },
+    menu: { title: "Menu Performance (Last 7 Days)", icon: "fas fa-utensils", iconColor: "text-indigo-500", description: "Interactive menu performance chart would appear here" }
+  });
+
   const analyticsTypes = [
     { id: 'sales', label: 'Sales Analytics' },
     { id: 'orders', label: 'Order Analytics' },
     { id: 'menu', label: 'Menu Performance' }
   ];
+
+  useEffect(() => {
+    fetchAnalyticsData();
+  }, [activeAnalytics]);
+
+  const fetchAnalyticsData = async () => {
+    try {
+      // TODO: API CALL - Get analytics data based on type (sales, orders, menu)
+      // TODO: import apiService from '../../../services/apiService';
+      // TODO: const response = await apiService.dashboard.getAnalytics(activeAnalytics);
+      // TODO: setAnalyticsData(prev => ({ ...prev, [activeAnalytics]: response.chartData }));
+      
+      // CURRENT: Mock data - remove when API is ready
+    } catch (err) {
+      // TODO: Handle API errors
+      console.error('Failed to fetch analytics data:', err.message);
+    }
+  };
 
   // FIXED COLORS (Tailwind-safe)
   const fixedColors = {
@@ -24,28 +54,7 @@ const AnalyticsSection = ({ activeAnalytics, setActiveAnalytics }) => {
   };
 
   const getAnalyticsContent = (type) => {
-    const contents = {
-      sales: {
-        title: "Revenue Trend (Last 7 Days)",
-        icon: "fas fa-chart-line",
-        iconColor: "text-orange-500",
-        description: "Interactive revenue chart would appear here"
-      },
-      orders: {
-        title: "Order Trend (Last 7 Days)",
-        icon: "fas fa-shopping-basket",
-        iconColor: "text-teal-500",
-        description: "Interactive order chart would appear here"
-      },
-      menu: {
-        title: "Menu Performance (Last 7 Days)",
-        icon: "fas fa-utensils",
-        iconColor: "text-indigo-500",
-        description: "Interactive menu performance chart would appear here"
-      }
-    };
-
-    return contents[type];
+    return analyticsData[type] || {};
   };
 
   return (

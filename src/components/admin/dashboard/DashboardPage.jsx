@@ -13,7 +13,7 @@ const DashboardPage = () => {
   const [activeAnalytics, setActiveAnalytics] = useState('sales');
 
   return (
-    <div className="p-4 md:p-6">
+    <div className="md:p-2">
       {/* Dashboard Overview */}
       <section className="mb-6 md:mb-8">
         <h1 className=" font-bold mb-2 text-black text-3xl">Restaurant Overview</h1>
